@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Color Changer | Javascript Project</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.container{
+			max-width: 800px;
+			margin:0 auto;
+		}
+		header{
+			background: #e9e9e9;
+		}
+		#header_heading{
+			text-align: center;
+			padding-top: 10px;
+			padding-bottom: 15px;
+		}
+		#header_heading h1{
+			text-shadow:red -2px 0,
+						cyan 2px 0;
+		}
+		#btn_div{
+			text-align: center;
+			margin-top: 50px;
+		}
+		#btn{
+			padding: 10px 8px 10px 8px;
+			border-radius: 15px;
+			border:none;
+			background: #a1a1a1;
+			cursor: pointer;
+		}
+		#color_code{
+			text-align: center;
+			margin-top: 30px;
+			color:black;	
+		}
+		@media only screen and (max-width: 600px){
+			*{
+				font-size:30px !important;
+			}
+		}
+	</style>
+</head>
+<body>
+
+	<header>
+		<div id="header_heading" class="container">
+			<h1>Background Color Changer</h1>
+		</div>
+	</header>
+	<div id="btn_div">
+		<div id="sub_btn_div" class="container">
+		<button id="btn">Click Me To Change Background</button>
+		</div>
+	</div>
+	<div id="color_code">
+		<h2>Color Code:</h2>
+		<h3 id="color_code_value"></h3>
+	</div>
+	<script type="text/javascript">
+		const btn = document.querySelector('#btn');
+		const color_code = document.querySelector('#color_code_value');
+		const body = document.querySelector('body');
+		// body.style.background = 'black';
+		// console.log(btn,color_code);
+		function generateRandomColor(){
+		    let maxVal = 0xFFFFFF; // 16777215
+		    let randomNumber = Math.random() * maxVal; 
+		    randomNumber = Math.floor(randomNumber);
+		    randomNumber = randomNumber.toString(16);
+		    let randColor = randomNumber.padStart(6, 0);   
+		    return `#${randColor.toUpperCase()}`
+		}
+		btn.onclick = () => {
+			// alert('working');
+			body.style.background = generateRandomColor();
+			color_code.innerHTML = generateRandomColor();
+		}
+ 
+	</script>
+</body>
+</html>
